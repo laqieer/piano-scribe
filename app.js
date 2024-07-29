@@ -45,7 +45,7 @@ fileInput.addEventListener('change', (e) => {
   recordingError.hidden = true;
   updateWorkingState(btnUpload, btnRecord);
   requestAnimationFrame(() => requestAnimationFrame(() => {
-    transcribeFromFile(e.target.files[0]);
+    transcribeFromFile(e.target.files[0], e.target.files[0].name);
     fileInput.value = null;
   }));
   
@@ -60,7 +60,7 @@ container.addEventListener('click', () => {
   }
 });
 
-async function transcribeFromFile(blob) {
+async function transcribeFromFile(blob, filename) {
   hideVisualizer();
   
   model.transcribeFromAudioFile(blob).then((ns) => {
@@ -72,6 +72,8 @@ async function transcribeFromFile(blob) {
       });
       resetUIState();
       showVisualizer();
+      // Save transcription midi automatically
+      saveAs(new File([mm.sequenceProtoToMidi(visualizer.noteSequence)], filename.replace(/\.[^/.]+$/, '') + '.mid'));
     });
   });
 }
