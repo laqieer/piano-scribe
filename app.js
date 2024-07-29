@@ -45,7 +45,9 @@ fileInput.addEventListener('change', (e) => {
   recordingError.hidden = true;
   updateWorkingState(btnUpload, btnRecord);
   requestAnimationFrame(() => requestAnimationFrame(() => {
-    transcribeFromFile(e.target.files[0], e.target.files[0].name);
+    for (let i = 0; i < e.target.files.length; i++) {
+      transcribeFromFile(e.target.files[i], e.target.files[i].name);
+    }
     fileInput.value = null;
   }));
   
