@@ -8,6 +8,9 @@ This fork adds support to multiple audio files conversion.
 - [Website 1](https://laqieer.github.io/piano-scribe/)
 - [Website 2](https://piano-scribe-laqieer.glitch.me/)
 
+See also:
+[A local server piano-scribe](https://github.com/laqieer/piano-scribe-local) ([Website](https://laqieer.github.io/piano-scribe-local/))
+
 This app converts raw audio to MIDI using [Onsets and Frames](https://g.co/magenta/onsets-frames), a neural network trained for polyphonic 
 piano transcription. 
 
